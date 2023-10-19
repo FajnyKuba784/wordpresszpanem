@@ -15,7 +15,7 @@ async function getprodukt(){
 })
     const json = await data.json()
     const iloscproduktowsklep = json.stock_quantity
-    if(iloscproduktowsklep<=10&& dane_zam.id==undefined){
+    if(iloscproduktowsklep<=10 && dane_zam.id==undefined){
         console.log("potrzebne zamowienie")
         zamowienie()
     }
@@ -29,9 +29,9 @@ async function getprodukt(){
 async function zamowienie(){
     const url = new URL(endpointhurtownia)
 
-    const body = {
-        "lineitems": [
-        {"product_id": 34, "qunatity": 134}
+    var body = {
+        "line_items": [
+        {"product_id": 35, "quantity": 69}
     ]}
 
    /* for(let i in params){
@@ -48,14 +48,14 @@ async function zamowienie(){
             "Content-Type": "application/json"
         }
     })
-    dane_zam = data.json()
+    dane_zam = await data.json()
 
 }
 
-getprodukt()
 setInterval(()=>{
-
+    
     getprodukt()
-
-
+    
+    
 },5000)
+getprodukt()

@@ -30,8 +30,9 @@ async function zamowienie(){
     const url = new URL(endpointhurtownia)
 
     const body = {
-        "lineitems": {"product_id": 34, "qunatity": 134}
-    }
+        "lineitems": [
+        {"product_id": 34, "qunatity": 134}
+    ]}
 
    /* for(let i in params){
 
@@ -41,7 +42,7 @@ async function zamowienie(){
     }*/
     const data = await fetch(url,{
         method: "POST",
-        body: body,
+        body: JSON.stringify(body),
         headers: {
             Authorization: `Basic ${btoa("hurtownia:hurtownia")}`,
             "Content-Type": "application/json"
